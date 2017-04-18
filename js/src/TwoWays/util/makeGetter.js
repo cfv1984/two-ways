@@ -1,4 +1,4 @@
-export default function makeGetter(expr){
+module.exports = function makeGetter(expr){
   if(expr.indexOf('$') > -1){ //special case the fuck out of this
     expr = expr.replace(/\$/g,'scope.\$');
   }

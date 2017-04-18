@@ -1,4 +1,4 @@
-export default function(obj){
+module.exports = function(obj){
   const undef   = () =>  typeof(obj) == 'undefined';
   const pojo    = () => !undef() && obj.constructor === Object;
   const array   = () => !undef() && obj instanceof Array;

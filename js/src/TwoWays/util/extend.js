@@ -1,4 +1,4 @@
-export default function extend(){
+var extend = function(){
 
   function isFunction(fn){ return typeof(fn) === "function" && fn.constructor === Function }
   function isArray(ar){ return ar instanceof Array }
@@ -38,3 +38,5 @@ export default function extend(){
 
   return target;
 };
+
+module.exports = extend;

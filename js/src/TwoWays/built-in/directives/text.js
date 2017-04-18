@@ -2,7 +2,7 @@ import BaseDirective from './base';
 import makeGetter    from '../../util/makeGetter';
 import merge         from '../../util/extend';
 
-export default class TextDirective extends BaseDirective
+class TextDirective extends BaseDirective
 {
   constructor(glueInstance){
     super(glueInstance, 'text');
@@ -49,3 +49,6 @@ function isOnEachBlock(node)
 {
   return node[this._glue.EachDirective.expandoId];
 }
+
+
+module.exports = TextDirective;

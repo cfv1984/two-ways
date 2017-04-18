@@ -2,7 +2,7 @@ import BaseDirective from './base';
 import makeGetter    from '../../util/makeGetter';
 import makeSetter    from '../../util/makeSetter';
 
-export default class EachDirective extends BaseDirective
+class EachDirective extends BaseDirective
 {
   constructor(glueInstance){
     super(glueInstance, 'each');
@@ -62,3 +62,5 @@ function firstChildElement(n)
   }
   return null;
 }
+
+module.exports = EachDirective;

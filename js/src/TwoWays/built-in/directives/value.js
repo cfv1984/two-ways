@@ -2,7 +2,7 @@ import BaseDirective from './base';
 import makeGetter    from '../../util/makeGetter';
 import makeSetter    from '../../util/makeSetter';
 
-export default class ValueDirective extends BaseDirective
+export class ValueDirective extends BaseDirective
 {
   constructor(glueInstance)
   {

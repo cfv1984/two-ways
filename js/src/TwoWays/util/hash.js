@@ -1,4 +1,4 @@
-export default function hash(o){
+module.exports = function hash(o){
   var str =  JSON.stringify(o, function(k, v){
     if(!!k && v === o)        return null;
     if(v instanceof RegExp)   return v.toString();

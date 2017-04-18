@@ -1,10 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -55,9 +51,6 @@ var BaseDirective = function () {
   return BaseDirective;
 }();
 
-exports.default = BaseDirective;
-
-
 BaseDirective.directive = "BaseDirective";
 
 BaseDirective.getInstance = function () {
@@ -65,12 +58,10 @@ BaseDirective.getInstance = function () {
   return new BaseDirective(config);
 };
 
+module.exports = BaseDirective;
+
 },{}],2:[function(require,module,exports){
 'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -122,9 +113,6 @@ var EachDirective = function (_BaseDirective) {
 
   return EachDirective;
 }(_base2.default);
-
-exports.default = EachDirective;
-
 
 EachDirective.directive = "EachDirective";
 EachDirective.getInstance = function () {
@@ -187,12 +175,10 @@ function firstChildElement(n) {
   return null;
 }
 
+module.exports = EachDirective;
+
 },{"../../util/makeGetter":12,"../../util/makeSetter":13,"./base":1}],3:[function(require,module,exports){
 'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -247,9 +233,6 @@ var EventsDirective = function (_BaseDirective) {
   return EventsDirective;
 }(_base2.default);
 
-exports.default = EventsDirective;
-
-
 EventsDirective.directive = "EventsDirective";
 EventsDirective.getInstance = function () {
   var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -293,12 +276,10 @@ function parseAttribute(attr) {
   });
 }
 
+module.exports = EventsDirective;
+
 },{"../../util/extend":9,"../../util/makeGetter":12,"./base":1}],4:[function(require,module,exports){
 'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 
 var _text = require('./text');
 
@@ -318,14 +299,10 @@ var _events2 = _interopRequireDefault(_events);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = [_each2.default, _text2.default, _value2.default, _events2.default];
+module.exports = [_each2.default, _text2.default, _value2.default, _events2.default];
 
 },{"./each":2,"./events":3,"./text":5,"./value":6}],5:[function(require,module,exports){
 'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -377,9 +354,6 @@ var TextDirective = function (_BaseDirective) {
   return TextDirective;
 }(_base2.default);
 
-exports.default = TextDirective;
-
-
 TextDirective.directive = "TextDirective";
 TextDirective.getInstance = function () {
   var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -406,12 +380,15 @@ function isOnEachBlock(node) {
   return node[this._glue.EachDirective.expandoId];
 }
 
+module.exports = TextDirective;
+
 },{"../../util/extend":9,"../../util/makeGetter":12,"./base":1}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.ValueDirective = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -435,7 +412,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ValueDirective = function (_BaseDirective) {
+var ValueDirective = exports.ValueDirective = function (_BaseDirective) {
   _inherits(ValueDirective, _BaseDirective);
 
   function ValueDirective(glueInstance) {
@@ -458,9 +435,6 @@ var ValueDirective = function (_BaseDirective) {
 
   return ValueDirective;
 }(_base2.default);
-
-exports.default = ValueDirective;
-
 
 ValueDirective.directive = "ValueDirective";
 ValueDirective.getInstance = function () {
@@ -503,13 +477,12 @@ function valueWatcher(expandoId, node, callback) {
 },{"../../util/makeGetter":12,"../../util/makeSetter":13,"./base":1}],7:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = {
+var jorge = {
   namespace: 'g',
   subscribers: []
 };
+
+module.exports = jorge;
 
 },{}],8:[function(require,module,exports){
 'use strict';
@@ -517,6 +490,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.TwoWays = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -526,7 +500,7 @@ var polyfill = _interopRequireWildcard(_polyfill);
 
 var _defaults = require('./defaults');
 
-var _defaults2 = _interopRequireDefault(_defaults);
+var defaults = _interopRequireWildcard(_defaults);
 
 var _extend = require('./util/extend');
 
@@ -554,11 +528,11 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var TwoWays = function () {
+var TwoWays = exports.TwoWays = function () {
   _createClass(TwoWays, [{
     key: 'defaults',
     get: function get() {
-      return _defaults2.default;
+      return defaults;
     }
   }, {
     key: 'scope',
@@ -638,9 +612,6 @@ var TwoWays = function () {
   return TwoWays;
 }();
 
-exports.default = TwoWays;
-
-
 function registerBuiltin(builtin) {
   if (!this[builtin.directive]) {
     this[builtin.directive] = builtin.getInstance(this);
@@ -651,14 +622,9 @@ function registerBuiltin(builtin) {
 },{"./built-in/directives":4,"./defaults":7,"./util/extend":9,"./util/hash":10,"./util/is":11,"./util/makeGetter":12,"./util/polyfill":14}],9:[function(require,module,exports){
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-exports.default = extend;
-function extend() {
+var extend = function extend() {
 
   function isFunction(fn) {
     return typeof fn === "function" && fn.constructor === Function;
@@ -712,14 +678,12 @@ function extend() {
   return target;
 };
 
+module.exports = extend;
+
 },{}],10:[function(require,module,exports){
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = hash;
-function hash(o) {
+module.exports = function hash(o) {
   var str = JSON.stringify(o, function (k, v) {
     if (!!k && v === o) return null;
     if (v instanceof RegExp) return v.toString();
@@ -737,16 +701,12 @@ function hash(o) {
   return (hash >>> 0).toString(32);
 
   return hash;
-}
+};
 
 },{}],11:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-exports.default = function (obj) {
+module.exports = function (obj) {
   var undef = function undef() {
     return typeof obj == 'undefined';
   };
@@ -765,11 +725,7 @@ exports.default = function (obj) {
 },{}],12:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = makeGetter;
-function makeGetter(expr) {
+module.exports = function makeGetter(expr) {
   if (expr.indexOf('$') > -1) {
     //special case the fuck out of this
     expr = expr.replace(/\$/g, 'scope.\$');
@@ -777,18 +733,14 @@ function makeGetter(expr) {
     expr = 'scope.' + expr;
   }
   return new Function('scope', 'return ' + expr);
-}
+};
 
 },{}],13:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = makeSetter;
-function makeSetter(expr) {
+module.exports = function makeSetter(expr) {
   return new Function('ctx', 'newVal', 'done', '\n    ctx.' + expr + ' = newVal;\n    done();\n   ');
-}
+};
 
 },{}],14:[function(require,module,exports){
 'use strict';
@@ -854,11 +806,7 @@ if (!String.prototype.trim) {
 
 var _TwoWays = require('./TwoWays');
 
-var _TwoWays2 = _interopRequireDefault(_TwoWays);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-module.exports = global['TwoWays'] = _TwoWays2.default;
+module.exports = global['TwoWays'] = _TwoWays.TwoWays;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./TwoWays":8}]},{},[15]);

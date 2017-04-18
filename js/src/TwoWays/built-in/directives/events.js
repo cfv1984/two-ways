@@ -2,7 +2,7 @@ import BaseDirective from './base';
 import makeGetter    from '../../util/makeGetter';
 import merge         from '../../util/extend';
 
-export default class EventsDirective extends BaseDirective
+class EventsDirective extends BaseDirective
 {
   constructor(glueInstance){
     super(glueInstance, 'on');
@@ -15,7 +15,6 @@ export default class EventsDirective extends BaseDirective
   }
 
   update(newVal) { return this }
-
 }
 
 EventsDirective.directive = "EventsDirective";
@@ -51,3 +50,5 @@ function parseAttribute(attr){
     .map(a=>a.split(/:[\s]?/g))
     .map(s=>s.map(f=>String(f).trim()));
 }
+
+module.exports = EventsDirective;

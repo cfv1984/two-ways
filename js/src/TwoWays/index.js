@@ -1,12 +1,12 @@
-import * as polyfill     from './util/polyfill';
-import defaults          from './defaults';
-import merge             from './util/extend';
-import is                from './util/is';
-import hash              from './util/hash';
-import builtinDirectives from './built-in/directives';
-import makeGetter        from './util/makeGetter';
+import * as polyfill       from './util/polyfill';
+import * as defaults       from './defaults';
+import merge               from './util/extend';
+import is                  from './util/is';
+import hash                from './util/hash';
+import builtinDirectives   from './built-in/directives';
+import makeGetter          from './util/makeGetter';
 
-export default class TwoWays{
+export class TwoWays{
   get defaults(){ return defaults                     }
   get scope(){   return this._scope                   }
   get config(){  return merge(true, {}, this._config) }

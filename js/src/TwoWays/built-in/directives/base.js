@@ -1,4 +1,4 @@
-export default class BaseDirective
+class BaseDirective
 {
   get expandoId(){ return this._expandoId }
   get directiveAttribute(){ return this._directiveAttr }
@@ -32,3 +32,5 @@ export default class BaseDirective
 BaseDirective.directive = "BaseDirective";
 
 BaseDirective.getInstance = (config = {})=> new BaseDirective(config);
+
+module.exports = BaseDirective;
