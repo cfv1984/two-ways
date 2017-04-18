@@ -2,7 +2,7 @@
   "name": "two-ways",
   "version": "0.0.5",
   "description": "A two way data-binding library",
-  "main": "js/src/app.js",
+  "main": "js/two-ways.min.js",
   "scripts": {
     "help": "node -e \"l=console.log.bind(console); b = '' + require('fs').readFileSync('package.json'); l('Available commands:');Object.keys(JSON.parse(b).scripts).forEach(s=>l(\\\"\t- \\\"+s))\"",
     "dir-check": "mkdirp js/src css/src && touch js/src/app.js && touch css/src/app.scss && touch index.html",
