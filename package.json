@@ -1,6 +1,6 @@
 {
   "name": "two-ways",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A two way data-binding library",
   "main": "js/two-ways.min.js",
   "scripts": {
