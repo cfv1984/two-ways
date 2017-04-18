@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Glue binds JS and HTML</title>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Glue binds JS and HTML</h1>
+      <p>A two-way data-binding library that doesn't overextend itself</p>
+    </header>
+  </main>
+  <section class="examples">
+    <header>
+      <h2>Examples</h2>
+    </header>
+    <ul class="example">
+      <li>
+        <p g-text="example.text">This text is going to be replaced &emdash;live&emdash; with what Glue bound to it</p>
+      </li>
+      <li>
+        <label for="rngExample"><span g-text="example.range">This text is going to be replaced &emdash;live&emdash; with what Glue bound to it</span>
+          <input id="rngExample" type="range" value="0" min="0" max="10" g-value="example.range">
+        </label>
+      </li>
+      <li>
+        <form>
+          <p g-text="example.counter">0</p>
+          <button g-on="click: example.increment">Click here to increment the count above</button>
+        </form>
+      </li>
+      <li>
+        <form>
+          <p g-if="example.visible">This shows if the button below wasn't clicked yet</p>
+          <p g-if="!example.visible">This shows if the button was clicked</p>
+          <button g-on="click: example.toggle">Click here to increment the count above</button>
+        </form>
+      </li>
+      <li>
+        <ul g-each="example.listValues">
+          <li g-text="$pos + '-' + $item"></li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+  <script src="js/app.js"></script>
+  <script>
+    onload = function(){
+      var glueConfig = TwoWays.defaults;
+
+      var g = window['t'] = new TwoWays({
+        example: {
+          text: "This is some dynamically obtained text, here represented by a lowly string",
+          range: 4,
+          counter: 0,
+          visible: true,
+          listValues: ["one","two","three","four"],
+          increment: function increment(evt){
+            evt.preventDefault();
+            evt.stopPropagation();
+            this.example.counter += 1;
+          },
+          toggle:    function toggle(){
+            this.example.visible = !this.visible;
+          }
+        }
+      }, glueConfig);
+
+      g.subscribe(function(is){ console.log("Range is now", is) }, 'example.range');
+      g.subscribe(function(is){ console.log("Scope is now", is) });
+    };
+  </script>
+</body>
+</html>

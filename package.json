@@ -1,0 +1,39 @@
+{
+  "name": "two-ways",
+  "version": "0.0.4",
+  "description": "A two way data-binding library",
+  "main": "js/src/app.js",
+  "scripts": {
+    "help":       "node -e \"l=console.log.bind(console); b = '' + require('fs').readFileSync('package.json'); l('Available commands:');Object.keys(JSON.parse(b).scripts).forEach(s=>l(\\\"\t- \\\"+s))\"",
+    "dir-check":  "mkdirp js/src css/src && touch js/src/app.js && touch css/src/app.scss && touch index.html",
+    "build:js":   "browserify js/src/app.js -o js/two-ways.js -t [ babelify --presets [ es2015 ] ]",
+    "build:css":  "node-sass css/src/app.scss > css/two-ways.css",
+    "build":      "npm run build:js && npm run build:css",
+    "minify:js":  "uglifyjs js/two-ways.js > js/two-ways.min.js",
+    "minify:css": "csso css/two-ways.css >  css/two-ways.min.css",
+    "minify":     "npm run minify:js && npm run minify:css",
+    "watch:js":   "watch \"npm run build:js\" \"./js/src\" --wait=1 --ignoreDotfiles",
+    "watch:css":  "watch \"npm run build:css\" \"./css/src\" --wait=1 --ignoreDotfiles",
+    "watch":      "concurrently \"npm run watch:js\" \"npm run watch:css\"",
+    "serve":      "http-server -p 4321",
+    "develop":    "npm run dir-check && concurrently \"npm run watch\" \"npm run serve\" --kill-others --names \"JS,CSS,HTTP\" --prefix \"[{name}]\"",
+    "bundle":     "npm run dir-check && npm run build && npm run minify"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-plugin-proxy": "^1.1.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.1.0",
+    "concurrently": "^3.4.0",
+    "csso": "^3.0.1",
+    "csso-cli": "^1.0.0",
+    "http-server": "^0.9.0",
+    "mkdirp": "^0.5.1",
+    "node-sass": "^4.5.0",
+    "uglify-js": "^2.8.12",
+    "watch": "^1.0.2"
+  }
+}

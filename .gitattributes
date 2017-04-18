@@ -1,0 +1,4 @@
+yarn.lock export-ignore
+.gitignore export-ignore
+index.html export-ignore
+
