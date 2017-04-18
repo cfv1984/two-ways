@@ -849,6 +849,7 @@ if (!String.prototype.trim) {
 }
 
 },{}],15:[function(require,module,exports){
+(function (global){
 'use strict';
 
 var _TwoWays = require('./TwoWays');
@@ -857,6 +858,7 @@ var _TwoWays2 = _interopRequireDefault(_TwoWays);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-module.exports = window['TwoWays'] = _TwoWays2.default;
+module.exports = global['TwoWays'] = _TwoWays2.default;
 
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./TwoWays":8}]},{},[15]);
