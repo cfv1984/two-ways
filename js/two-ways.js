@@ -1,11 +1,15 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var BaseDirective = function () {
+var BaseDirective = exports.BaseDirective = function () {
   _createClass(BaseDirective, [{
     key: 'expandoId',
     get: function get() {
@@ -58,8 +62,6 @@ BaseDirective.getInstance = function () {
   return new BaseDirective(config);
 };
 
-module.exports = BaseDirective;
-
 },{}],2:[function(require,module,exports){
 'use strict';
 
@@ -67,17 +69,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _base = require('./base');
 
-var _base2 = _interopRequireDefault(_base);
+var _makeGetter = require('./../../util/makeGetter');
 
-var _makeGetter = require('../../util/makeGetter');
-
-var _makeGetter2 = _interopRequireDefault(_makeGetter);
-
-var _makeSetter = require('../../util/makeSetter');
-
-var _makeSetter2 = _interopRequireDefault(_makeSetter);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _makeSetter = require('./../../util/makeSetter');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -101,7 +95,7 @@ var EachDirective = function (_BaseDirective) {
 
       var bindings = [].slice.call(document.querySelectorAll('[' + this.directiveAttribute + ']')).forEach(function (n) {
         var expression = n.getAttribute(_this2.directiveAttribute),
-            result = (0, _makeGetter2.default)(expression)(_this2._glue.scope),
+            result = (0, _makeGetter.makeGetter)(expression)(_this2._glue.scope),
             frag = document.createDocumentFragment(),
             expanded = result.forEach(function ($item, $pos, $all) {
           aggregateMarkup.call(_this2, frag, n, $item, $pos, $all);
@@ -112,7 +106,7 @@ var EachDirective = function (_BaseDirective) {
   }]);
 
   return EachDirective;
-}(_base2.default);
+}(_base.BaseDirective);
 
 EachDirective.directive = "EachDirective";
 EachDirective.getInstance = function () {
@@ -177,7 +171,7 @@ function firstChildElement(n) {
 
 module.exports = EachDirective;
 
-},{"../../util/makeGetter":12,"../../util/makeSetter":13,"./base":1}],3:[function(require,module,exports){
+},{"./../../util/makeGetter":12,"./../../util/makeSetter":13,"./base":1}],3:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -186,17 +180,9 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _base = require('./base');
 
-var _base2 = _interopRequireDefault(_base);
+var _makeGetter = require('./../../util/makeGetter');
 
-var _makeGetter = require('../../util/makeGetter');
-
-var _makeGetter2 = _interopRequireDefault(_makeGetter);
-
-var _extend = require('../../util/extend');
-
-var _extend2 = _interopRequireDefault(_extend);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _extend = require('./../../util/extend');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -231,7 +217,7 @@ var EventsDirective = function (_BaseDirective) {
   }]);
 
   return EventsDirective;
-}(_base2.default);
+}(_base.BaseDirective);
 
 EventsDirective.directive = "EventsDirective";
 EventsDirective.getInstance = function () {
@@ -249,7 +235,7 @@ function bindToHandlers() {
     return n[_this3.expandoId] = attributePairs.map(function (p) {
       return {
         evt: p[0],
-        handler: (0, _makeGetter2.default)(p[1])(_this3._glue.scope),
+        handler: (0, _makeGetter.makeGetter)(p[1])(_this3._glue.scope),
         node: n
       };
     });
@@ -278,28 +264,18 @@ function parseAttribute(attr) {
 
 module.exports = EventsDirective;
 
-},{"../../util/extend":9,"../../util/makeGetter":12,"./base":1}],4:[function(require,module,exports){
+},{"./../../util/extend":9,"./../../util/makeGetter":12,"./base":1}],4:[function(require,module,exports){
 'use strict';
 
 var _text = require('./text');
 
-var _text2 = _interopRequireDefault(_text);
-
 var _value = require('./value');
-
-var _value2 = _interopRequireDefault(_value);
 
 var _each = require('./each');
 
-var _each2 = _interopRequireDefault(_each);
-
 var _events = require('./events');
 
-var _events2 = _interopRequireDefault(_events);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-module.exports = [_each2.default, _text2.default, _value2.default, _events2.default];
+module.exports = [_each.each, _text.text, _value.value, _events.events];
 
 },{"./each":2,"./events":3,"./text":5,"./value":6}],5:[function(require,module,exports){
 'use strict';
@@ -308,23 +284,17 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _base = require('./base');
 
-var _base2 = _interopRequireDefault(_base);
+var _makeGetter = require('./../../util/makeGetter');
 
-var _makeGetter = require('../../util/makeGetter');
-
-var _makeGetter2 = _interopRequireDefault(_makeGetter);
-
-var _extend = require('../../util/extend');
-
-var _extend2 = _interopRequireDefault(_extend);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _extend = require('./../../util/extend');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+console.log(_base.BaseDirective);
 
 var TextDirective = function (_BaseDirective) {
   _inherits(TextDirective, _BaseDirective);
@@ -342,7 +312,7 @@ var TextDirective = function (_BaseDirective) {
 
       [].slice.call(document.querySelectorAll('[' + this.directiveAttribute + ']')).forEach(function (n) {
         n[_this2.expandoId] = n[_this2.expandoId] || { onEachBlock: null, prevVal: null };
-        var expressionValue = (0, _makeGetter2.default)(n.getAttribute(_this2.directiveAttribute));
+        var expressionValue = (0, _makeGetter.makeGetter)(n.getAttribute(_this2.directiveAttribute));
         if (!isOnEachBlock.call(_this2, n)) {
           return setTextNormally.call(_this2, expressionValue, n);
         }
@@ -352,7 +322,7 @@ var TextDirective = function (_BaseDirective) {
   }]);
 
   return TextDirective;
-}(_base2.default);
+}(_base.BaseDirective);
 
 TextDirective.directive = "TextDirective";
 TextDirective.getInstance = function () {
@@ -382,29 +352,16 @@ function isOnEachBlock(node) {
 
 module.exports = TextDirective;
 
-},{"../../util/extend":9,"../../util/makeGetter":12,"./base":1}],6:[function(require,module,exports){
+},{"./../../util/extend":9,"./../../util/makeGetter":12,"./base":1}],6:[function(require,module,exports){
 'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.ValueDirective = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _base = require('./base');
 
-var _base2 = _interopRequireDefault(_base);
-
 var _makeGetter = require('../../util/makeGetter');
 
-var _makeGetter2 = _interopRequireDefault(_makeGetter);
-
 var _makeSetter = require('../../util/makeSetter');
-
-var _makeSetter2 = _interopRequireDefault(_makeSetter);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -412,7 +369,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ValueDirective = exports.ValueDirective = function (_BaseDirective) {
+var ValueDirective = function (_BaseDirective) {
   _inherits(ValueDirective, _BaseDirective);
 
   function ValueDirective(glueInstance) {
@@ -434,7 +391,7 @@ var ValueDirective = exports.ValueDirective = function (_BaseDirective) {
   }]);
 
   return ValueDirective;
-}(_base2.default);
+}(_base.BaseDirective);
 
 ValueDirective.directive = "ValueDirective";
 ValueDirective.getInstance = function () {
@@ -446,13 +403,13 @@ function syncValue(node) {
   var _this3 = this;
 
   var expression = node.getAttribute(this.directiveAttribute),
-      result = (0, _makeGetter2.default)(expression)(this._glue.scope);
+      result = (0, _makeGetter.makeGetter)(expression)(this._glue.scope);
   node[this.expandoId] = node[this.expandoId] || { raf: -1, onEach: false };
   node.value != result && (node.value = result);
 
   if (node[this.expandoId].raf < 0) {
     var updateValue = function updateValue(val) {
-      return (0, _makeSetter2.default)(expression)(_this3._glue.scope, ['number', 'range'].indexOf(node.type) > -1 ? parseInt(node.value, 10) : node.value, function () {
+      return (0, _makeSetter.makeSetter)(expression)(_this3._glue.scope, ['number', 'range'].indexOf(node.type) > -1 ? parseInt(node.value, 10) : node.value, function () {
         return _this3._glue.notifyChanged();
       });
     };
@@ -473,6 +430,8 @@ function valueWatcher(expandoId, node, callback) {
   };
   node[expandoId].raf = requestAnimationFrame(checker);
 }
+
+module.exports = ValueDirective;
 
 },{"../../util/makeGetter":12,"../../util/makeSetter":13,"./base":1}],7:[function(require,module,exports){
 'use strict';
@@ -504,25 +463,15 @@ var defaults = _interopRequireWildcard(_defaults);
 
 var _extend = require('./util/extend');
 
-var _extend2 = _interopRequireDefault(_extend);
-
 var _is = require('./util/is');
-
-var _is2 = _interopRequireDefault(_is);
 
 var _hash = require('./util/hash');
 
-var _hash2 = _interopRequireDefault(_hash);
+var _makeGetter = require('./util/makeGetter');
 
 var _directives = require('./built-in/directives');
 
-var _directives2 = _interopRequireDefault(_directives);
-
-var _makeGetter = require('./util/makeGetter');
-
-var _makeGetter2 = _interopRequireDefault(_makeGetter);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var builtinDirectives = _interopRequireWildcard(_directives);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -542,7 +491,7 @@ var TwoWays = exports.TwoWays = function () {
   }, {
     key: 'config',
     get: function get() {
-      return (0, _extend2.default)(true, {}, this._config);
+      return (0, _extend.merge)(true, {}, this._config);
     }
   }]);
 
@@ -553,12 +502,12 @@ var TwoWays = exports.TwoWays = function () {
 
     _classCallCheck(this, TwoWays);
 
-    if (!(0, _is2.default)(config).pojo()) throw new Error("Config musts be a plain JS object");
+    if (!(0, _is.is)(config).pojo()) throw new Error("Config musts be a plain JS object");
 
     this._scope = {};
-    this._config = (0, _extend2.default)(this.defaults, config || {});
-    this._lastSum = (0, _hash2.default)(this._scope);
-    _directives2.default.forEach(function (builtin) {
+    this._config = (0, _extend.merge)(this.defaults, config || {});
+    this._lastSum = (0, _hash.hash)(this._scope);
+    builtinDirectives.forEach(function (builtin) {
       return registerBuiltin.call(_this, builtin);
     });
     this._watchHandle = requestAnimationFrame(function () {
@@ -572,7 +521,7 @@ var TwoWays = exports.TwoWays = function () {
     value: function watchForChanges() {
       var _this2 = this;
 
-      var currentHash = (0, _hash2.default)(this._scope);
+      var currentHash = (0, _hash.hash)(this._scope);
       if (currentHash !== this._lastSum) {
         this.notifyChanged();
       }
@@ -587,7 +536,7 @@ var TwoWays = exports.TwoWays = function () {
     value: function notifyChanged() {
       var _this3 = this;
 
-      var currentHash = (0, _hash2.default)(this._scope);
+      var currentHash = (0, _hash.hash)(this._scope);
       if (currentHash !== this._lastSum) {
         this._config.subscribers.forEach(function (fn) {
           return fn(_this3._scope);
@@ -602,7 +551,7 @@ var TwoWays = exports.TwoWays = function () {
       var listener = fn;
       if (prop) {
         listener = function listener(scope) {
-          return fn((0, _makeGetter2.default)(prop)(scope));
+          return fn((0, _makeGetter.makeGetter)(prop)(scope));
         };
       }
       this._config.subscribers.push(listener);
@@ -806,7 +755,11 @@ if (!String.prototype.trim) {
 
 var _TwoWays = require('./TwoWays');
 
-module.exports = global['TwoWays'] = _TwoWays.TwoWays;
+var _TwoWays2 = _interopRequireDefault(_TwoWays);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = global['TwoWays'] = _TwoWays2.default;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./TwoWays":8}]},{},[15]);

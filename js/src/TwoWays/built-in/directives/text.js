@@ -1,6 +1,8 @@
-import BaseDirective from './base';
-import makeGetter    from '../../util/makeGetter';
-import merge         from '../../util/extend';
+import {BaseDirective} from './base';
+import {makeGetter}    from './../../util/makeGetter';
+import {merge}         from './../../util/extend';
+
+console.log(BaseDirective);
 
 class TextDirective extends BaseDirective
 {

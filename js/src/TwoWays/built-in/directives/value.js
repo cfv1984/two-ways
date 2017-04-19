@@ -1,8 +1,8 @@
-import BaseDirective from './base';
-import makeGetter    from '../../util/makeGetter';
-import makeSetter    from '../../util/makeSetter';
+import {BaseDirective} from './base';
+import {makeGetter}    from '../../util/makeGetter';
+import {makeSetter}    from '../../util/makeSetter';
 
-export class ValueDirective extends BaseDirective
+class ValueDirective extends BaseDirective
 {
   constructor(glueInstance)
   {
@@ -52,3 +52,5 @@ function valueWatcher(expandoId, node, callback)
     };
   node[expandoId].raf = requestAnimationFrame(checker);
 }
+
+module.exports = ValueDirective;
