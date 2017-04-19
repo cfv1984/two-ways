@@ -1,3 +1,2 @@
-import TwoWays from './TwoWays';
-
-module.exports = global['TwoWays'] = TwoWays;
+import {TwoWays} from './TwoWays';
+module.exports = window['TwoWays'] = TwoWays;
