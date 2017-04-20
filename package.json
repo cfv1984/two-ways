@@ -19,7 +19,12 @@
     "develop": "npm run dir-check && concurrently \"npm run watch\" \"npm run serve\" --kill-others --names \"JS,CSS,HTTP\" --prefix \"[{name}]\"",
     "bundle": "webpack --config webpack.config.js --optimize-minimize"
   },
-  "author": "",
+  "keywords": ["data-binding","observable","dom-binding"],
+  "bugs": {
+    "url" : "https://github.com/cfv1984/two-ways/issues",
+    "email" : "cfvergara@gmail.com"
+  },
+  "author": "Carlos Vergara <cfvergara@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.24.0",
