@@ -71,7 +71,13 @@ var _base = require('./base');
 
 var _makeGetter = require('./../../util/makeGetter');
 
+var _makeGetter2 = _interopRequireDefault(_makeGetter);
+
 var _makeSetter = require('./../../util/makeSetter');
+
+var _makeSetter2 = _interopRequireDefault(_makeSetter);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -95,7 +101,7 @@ var EachDirective = function (_BaseDirective) {
 
       var bindings = [].slice.call(document.querySelectorAll('[' + this.directiveAttribute + ']')).forEach(function (n) {
         var expression = n.getAttribute(_this2.directiveAttribute),
-            result = (0, _makeGetter.makeGetter)(expression)(_this2._glue.scope),
+            result = (0, _makeGetter2.default)(expression)(_this2._glue.scope),
             frag = document.createDocumentFragment(),
             expanded = result.forEach(function ($item, $pos, $all) {
           aggregateMarkup.call(_this2, frag, n, $item, $pos, $all);
@@ -182,7 +188,13 @@ var _base = require('./base');
 
 var _makeGetter = require('./../../util/makeGetter');
 
+var _makeGetter2 = _interopRequireDefault(_makeGetter);
+
 var _extend = require('./../../util/extend');
+
+var _extend2 = _interopRequireDefault(_extend);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -235,7 +247,7 @@ function bindToHandlers() {
     return n[_this3.expandoId] = attributePairs.map(function (p) {
       return {
         evt: p[0],
-        handler: (0, _makeGetter.makeGetter)(p[1])(_this3._glue.scope),
+        handler: (0, _makeGetter2.default)(p[1])(_this3._glue.scope),
         node: n
       };
     });
@@ -269,13 +281,23 @@ module.exports = EventsDirective;
 
 var _text = require('./text');
 
+var _text2 = _interopRequireDefault(_text);
+
 var _value = require('./value');
+
+var _value2 = _interopRequireDefault(_value);
 
 var _each = require('./each');
 
+var _each2 = _interopRequireDefault(_each);
+
 var _events = require('./events');
 
-module.exports = [_each.each, _text.text, _value.value, _events.events];
+var _events2 = _interopRequireDefault(_events);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = [_each2.default, _text2.default, _value2.default, _events2.default];
 
 },{"./each":2,"./events":3,"./text":5,"./value":6}],5:[function(require,module,exports){
 'use strict';
@@ -286,7 +308,13 @@ var _base = require('./base');
 
 var _makeGetter = require('./../../util/makeGetter');
 
+var _makeGetter2 = _interopRequireDefault(_makeGetter);
+
 var _extend = require('./../../util/extend');
+
+var _extend2 = _interopRequireDefault(_extend);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -312,7 +340,7 @@ var TextDirective = function (_BaseDirective) {
 
       [].slice.call(document.querySelectorAll('[' + this.directiveAttribute + ']')).forEach(function (n) {
         n[_this2.expandoId] = n[_this2.expandoId] || { onEachBlock: null, prevVal: null };
-        var expressionValue = (0, _makeGetter.makeGetter)(n.getAttribute(_this2.directiveAttribute));
+        var expressionValue = (0, _makeGetter2.default)(n.getAttribute(_this2.directiveAttribute));
         if (!isOnEachBlock.call(_this2, n)) {
           return setTextNormally.call(_this2, expressionValue, n);
         }
@@ -361,7 +389,13 @@ var _base = require('./base');
 
 var _makeGetter = require('../../util/makeGetter');
 
+var _makeGetter2 = _interopRequireDefault(_makeGetter);
+
 var _makeSetter = require('../../util/makeSetter');
+
+var _makeSetter2 = _interopRequireDefault(_makeSetter);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -403,13 +437,13 @@ function syncValue(node) {
   var _this3 = this;
 
   var expression = node.getAttribute(this.directiveAttribute),
-      result = (0, _makeGetter.makeGetter)(expression)(this._glue.scope);
+      result = (0, _makeGetter2.default)(expression)(this._glue.scope);
   node[this.expandoId] = node[this.expandoId] || { raf: -1, onEach: false };
   node.value != result && (node.value = result);
 
   if (node[this.expandoId].raf < 0) {
     var updateValue = function updateValue(val) {
-      return (0, _makeSetter.makeSetter)(expression)(_this3._glue.scope, ['number', 'range'].indexOf(node.type) > -1 ? parseInt(node.value, 10) : node.value, function () {
+      return (0, _makeSetter2.default)(expression)(_this3._glue.scope, ['number', 'range'].indexOf(node.type) > -1 ? parseInt(node.value, 10) : node.value, function () {
         return _this3._glue.notifyChanged();
       });
     };
@@ -463,15 +497,25 @@ var defaults = _interopRequireWildcard(_defaults);
 
 var _extend = require('./util/extend');
 
+var _extend2 = _interopRequireDefault(_extend);
+
 var _is = require('./util/is');
+
+var _is2 = _interopRequireDefault(_is);
 
 var _hash = require('./util/hash');
 
+var _hash2 = _interopRequireDefault(_hash);
+
 var _makeGetter = require('./util/makeGetter');
+
+var _makeGetter2 = _interopRequireDefault(_makeGetter);
 
 var _directives = require('./built-in/directives');
 
-var builtinDirectives = _interopRequireWildcard(_directives);
+var _directives2 = _interopRequireDefault(_directives);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -491,7 +535,7 @@ var TwoWays = exports.TwoWays = function () {
   }, {
     key: 'config',
     get: function get() {
-      return (0, _extend.merge)(true, {}, this._config);
+      return (0, _extend2.default)(true, {}, this._config);
     }
   }]);
 
@@ -502,12 +546,12 @@ var TwoWays = exports.TwoWays = function () {
 
     _classCallCheck(this, TwoWays);
 
-    if (!(0, _is.is)(config).pojo()) throw new Error("Config musts be a plain JS object");
+    if (!(0, _is2.default)(config).pojo()) throw new Error("Config musts be a plain JS object");
 
     this._scope = {};
-    this._config = (0, _extend.merge)(this.defaults, config || {});
-    this._lastSum = (0, _hash.hash)(this._scope);
-    builtinDirectives.forEach(function (builtin) {
+    this._config = (0, _extend2.default)(this.defaults, config || {});
+    this._lastSum = (0, _hash2.default)(this._scope);
+    _directives2.default.forEach(function (builtin) {
       return registerBuiltin.call(_this, builtin);
     });
     this._watchHandle = requestAnimationFrame(function () {
@@ -521,7 +565,7 @@ var TwoWays = exports.TwoWays = function () {
     value: function watchForChanges() {
       var _this2 = this;
 
-      var currentHash = (0, _hash.hash)(this._scope);
+      var currentHash = (0, _hash2.default)(this._scope);
       if (currentHash !== this._lastSum) {
         this.notifyChanged();
       }
@@ -536,7 +580,7 @@ var TwoWays = exports.TwoWays = function () {
     value: function notifyChanged() {
       var _this3 = this;
 
-      var currentHash = (0, _hash.hash)(this._scope);
+      var currentHash = (0, _hash2.default)(this._scope);
       if (currentHash !== this._lastSum) {
         this._config.subscribers.forEach(function (fn) {
           return fn(_this3._scope);
@@ -551,7 +595,7 @@ var TwoWays = exports.TwoWays = function () {
       var listener = fn;
       if (prop) {
         listener = function listener(scope) {
-          return fn((0, _makeGetter.makeGetter)(prop)(scope));
+          return fn((0, _makeGetter2.default)(prop)(scope));
         };
       }
       this._config.subscribers.push(listener);
@@ -750,16 +794,10 @@ if (!String.prototype.trim) {
 }
 
 },{}],15:[function(require,module,exports){
-(function (global){
 'use strict';
 
 var _TwoWays = require('./TwoWays');
 
-var _TwoWays2 = _interopRequireDefault(_TwoWays);
+module.exports = window['TwoWays'] = _TwoWays.TwoWays;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-module.exports = global['TwoWays'] = _TwoWays2.default;
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./TwoWays":8}]},{},[15]);

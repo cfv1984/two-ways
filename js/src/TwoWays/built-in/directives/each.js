@@ -1,6 +1,6 @@
 import {BaseDirective} from './base';
-import {makeGetter}    from './../../util/makeGetter';
-import {makeSetter}    from './../../util/makeSetter';
+import makeGetter      from './../../util/makeGetter';
+import makeSetter      from './../../util/makeSetter';
 
 class EachDirective extends BaseDirective
 {

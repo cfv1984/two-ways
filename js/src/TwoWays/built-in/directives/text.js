@@ -1,6 +1,6 @@
 import {BaseDirective} from './base';
-import {makeGetter}    from './../../util/makeGetter';
-import {merge}         from './../../util/extend';
+import makeGetter      from './../../util/makeGetter';
+import merge           from './../../util/extend';
 
 console.log(BaseDirective);
 

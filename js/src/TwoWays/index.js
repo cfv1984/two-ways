@@ -1,10 +1,10 @@
 import * as polyfill          from './util/polyfill';
 import * as defaults          from './defaults';
-import {merge}                from './util/extend';
-import {is}                   from './util/is';
-import {hash}                 from './util/hash';
-import {makeGetter}           from './util/makeGetter';
-import * as builtinDirectives from './built-in/directives';
+import merge                  from './util/extend';
+import is                     from './util/is';
+import hash                   from './util/hash';
+import makeGetter             from './util/makeGetter';
+import builtinDirectives     from './built-in/directives';
 
 export class TwoWays{
   get defaults(){ return defaults                     }
